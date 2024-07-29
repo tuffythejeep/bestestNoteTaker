@@ -42,6 +42,7 @@ app.post("/api/notes", (req, res) => {
   });
 });
 
+
 app.delete("/api/notes/:id", (req, res) => {
   const { id } = req.params;
   fs.readFile(path.join(__dirname, "db.json"), "utf8", (err, data) => {
