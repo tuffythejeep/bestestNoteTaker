@@ -28,28 +28,31 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  function saveNote() {
-    const note = {
-      title: noteTitle.value,
-      text: noteText.value,
-    };
-    fetch("/api/notes", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(note),
+function saveNote() {
+  const note = {
+    title: noteTitle.value,
+    text: noteText.value,
+  };
+
+  fetch("/api/notes", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(note),
+  })
+    .then((response) => response.json())
+    .then((newNote) => {
+      fetchNotes(); // Refresh the notes list
+      noteTitle.value = "";
+      noteText.value = "";
+      saveNoteBtn.style.display = "none";
+      clearFormBtn.style.display = "none";
+      newNoteBtn.style.display = "inline";
     })
-      .then((response) => response.json())
-      .then((newNote) => {
-        fetchNotes();
-        noteTitle.value = "";
-        noteText.value = "";
-        saveNoteBtn.style.display = "none";
-        clearFormBtn.style.display = "none";
-        newNoteBtn.style.display = "inline";
-      });
-  }
+    .catch((error) => console.error("Error:", error));
+}
+
 
   function deleteNote() {
     const selectedNote = document.querySelector(".list-group-item.selected");
