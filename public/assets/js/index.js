@@ -43,7 +43,7 @@ function saveNote() {
   })
     .then((response) => response.json())
     .then((newNote) => {
-      fetchNotes(); // Refresh the notes list
+      fetchNotes();
       noteTitle.value = "";
       noteText.value = "";
       saveNoteBtn.style.display = "none";
