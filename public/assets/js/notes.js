@@ -97,5 +97,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   fetchNotes();
-  hideSaveAndClearButtons(); // Initially hide Save and Clear buttons
-});
+ });
