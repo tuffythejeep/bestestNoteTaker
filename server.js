@@ -1,70 +1,73 @@
 const express = require("express");
-const fs = require("fs").promises;
+const fs = require("fs");
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const DB_PATH = path.join(__dirname, "db.json");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-async function readDb() {
-  try {
-    const data = await fs.readFile(DB_PATH, "utf8");
-    return JSON.parse(data).notes;
-  } catch (error) {
-    if (error.code === "ENOENT") {
-      
-      await fs.writeFile(DB_PATH, JSON.stringify({ notes: [] }), "utf8");
-      return [];
+// API Routes
+app.get("/api/notes", (req, res) => {
+  fs.readFile(path.join(__dirname, "db.json"), "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Error reading notes" });
     }
-    throw error;
-  }
-}
-
-async function writeDb(notes) {
-  await fs.writeFile(DB_PATH, JSON.stringify({ notes }, null, 2), "utf8");
-}
-
-app.get("/api/notes", async (req, res) => {
-  try {
-    const notes = await readDb();
-    res.json(notes);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Error reading notes" });
-  }
+    res.json(JSON.parse(data));
+  });
 });
 
-app.post("/api/notes", async (req, res) => {
-  try {
-    const newNote = { ...req.body, id: uuidv4() };
-    const notes = await readDb();
+app.post("/api/notes", (req, res) => {
+  const newNote = { ...req.body, id: uuidv4() };
+  fs.readFile(path.join(__dirname, "db.json"), "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Error reading notes" });
+    }
+    const notes = JSON.parse(data);
     notes.push(newNote);
-    await writeDb(notes);
-    res.json(newNote);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Error saving note" });
-  }
+    fs.writeFile(
+      path.join(__dirname, "db.json"),
+      JSON.stringify(notes, null, 2),
+      (err) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).json({ error: "Error saving note" });
+        }
+        res.json(newNote);
+      }
+    );
+  });
 });
 
-app.delete("/api/notes/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    let notes = await readDb();
+app.delete("/api/notes/:id", (req, res) => {
+  const { id } = req.params;
+  fs.readFile(path.join(__dirname, "db.json"), "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Error reading notes" });
+    }
+    let notes = JSON.parse(data);
     notes = notes.filter((note) => note.id !== id);
-    await writeDb(notes);
-    res.json({ message: "Note deleted" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Error deleting note" });
-  }
+    fs.writeFile(
+      path.join(__dirname, "db.json"),
+      JSON.stringify(notes, null, 2),
+      (err) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).json({ error: "Error deleting note" });
+        }
+        res.json({ message: "Note deleted" });
+      }
+    );
+  });
 });
 
+// HTML Routes
 app.get("/notes", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "notes.html"));
 });
