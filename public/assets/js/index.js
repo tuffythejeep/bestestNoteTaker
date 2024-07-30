@@ -10,49 +10,58 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("/api/notes")
       .then((response) => response.json())
       .then((notes) => {
-        listGroup.innerHTML = "";
-        notes.forEach((note) => {
-          const li = document.createElement("li");
-          li.className = "list-group-item";
-          li.dataset.id = note.id;
-          li.textContent = note.title;
-          li.addEventListener("click", () => {
-            noteTitle.value = note.title;
-            noteText.value = note.text;
-            saveNoteBtn.style.display = "none";
-            clearFormBtn.style.display = "none";
-            newNoteBtn.style.display = "inline";
+        listGroup.innerHTML = ""; // Clear existing notes
+        if (notes.length > 0) {
+          notes.forEach((note) => {
+            const li = createNoteElement(note);
+            listGroup.appendChild(li);
           });
-          listGroup.appendChild(li);
-        });
-      });
+        } else {
+          listGroup.innerHTML = "<p>No notes yet!</p>"; // Display message for empty list
+        }
+      })
+      .catch((error) => console.error("Error:", error));
   }
 
-function saveNote() {
-  const note = {
-    title: noteTitle.value,
-    text: noteText.value,
-  };
-
-  fetch("/api/notes", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(note),
-  })
-    .then((response) => response.json())
-    .then((newNote) => {
-      fetchNotes();
-      noteTitle.value = "";
-      noteText.value = "";
+  function createNoteElement(note) {
+    const li = document.createElement("li");
+    li.className = "list-group-item";
+    li.dataset.id = note.id;
+    li.textContent = note.title;
+    li.addEventListener("click", () => {
+      noteTitle.value = note.title;
+      noteText.value = note.text;
       saveNoteBtn.style.display = "none";
       clearFormBtn.style.display = "none";
       newNoteBtn.style.display = "inline";
-    })
-    .catch((error) => console.error("Error:", error));
-}
+    });
+    return li;
+  }
 
+  function saveNote() {
+    const note = {
+      title: noteTitle.value,
+      text: noteText.value,
+    };
+
+    fetch("/api/notes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(note),
+    })
+      .then((response) => response.json())
+      .then((newNote) => {
+        fetchNotes();
+        noteTitle.value = "";
+        noteText.value = "";
+        saveNoteBtn.style.display = "none";
+        clearFormBtn.style.display = "none";
+        newNoteBtn.style.display = "inline";
+      })
+      .catch((error) => console.error("Error:", error));
+  }
 
   function deleteNote() {
     const selectedNote = document.querySelector(".list-group-item.selected");
