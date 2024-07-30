@@ -10,8 +10,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
+// Serve the main index.html for all unmatched routes
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
+});
+
+// Route to serve notes.html
+app.get("/notes", (req, res) => {
+  res.sendFile(path.join(__dirname, "notes.html"));
 });
 
 app.get("/api/notes", (req, res) => {
