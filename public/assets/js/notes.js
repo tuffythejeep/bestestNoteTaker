@@ -6,6 +6,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const clearFormBtn = document.querySelector(".clear-btn");
   const newNoteBtn = document.querySelector(".new-note");
 
+  function showSaveAndClearButtons() {
+    saveNoteBtn.style.display = "inline";
+    clearFormBtn.style.display = "inline";
+    newNoteBtn.style.display = "none";
+  }
+
+  function hideSaveAndClearButtons() {
+    saveNoteBtn.style.display = "none";
+    clearFormBtn.style.display = "none";
+    newNoteBtn.style.display = "inline";
+  }
+
+  function handleNoteInput() {
+    if (noteTitle.value.trim() !== "" || noteText.value.trim() !== "") {
+      showSaveAndClearButtons();
+    } else {
+      hideSaveAndClearButtons();
+    }
+  }
+
+  noteTitle.addEventListener("input", handleNoteInput);
+  noteText.addEventListener("input", handleNoteInput);
+
   function fetchNotes() {
     fetch("/api/notes")
       .then((response) => response.json())
@@ -31,9 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     li.addEventListener("click", () => {
       noteTitle.value = note.title;
       noteText.value = note.text;
-      saveNoteBtn.style.display = "none";
-      clearFormBtn.style.display = "none";
-      newNoteBtn.style.display = "inline";
+      hideSaveAndClearButtons();
     });
     return li;
   }
@@ -56,40 +77,25 @@ document.addEventListener("DOMContentLoaded", () => {
         fetchNotes();
         noteTitle.value = "";
         noteText.value = "";
-        saveNoteBtn.style.display = "none";
-        clearFormBtn.style.display = "none";
-        newNoteBtn.style.display = "inline";
+        hideSaveAndClearButtons();
       })
       .catch((error) => console.error("Error:", error));
   }
 
-  function deleteNote() {
-    const selectedNote = document.querySelector(".list-group-item.selected");
-    if (selectedNote) {
-      fetch(`/api/notes/${selectedNote.dataset.id}`, {
-        method: "DELETE",
-      }).then(() => {
-        fetchNotes();
-        noteTitle.value = "";
-        noteText.value = "";
-        saveNoteBtn.style.display = "none";
-        clearFormBtn.style.display = "inline";
-      });
-    }
+  function clearForm() {
+    noteTitle.value = "";
+    noteText.value = "";
+    hideSaveAndClearButtons();
   }
 
   saveNoteBtn.addEventListener("click", saveNote);
-  clearFormBtn.addEventListener("click", () => {
-    noteTitle.value = "";
-    noteText.value = "";
-  });
+  clearFormBtn.addEventListener("click", clearForm);
   newNoteBtn.addEventListener("click", () => {
     noteTitle.value = "";
     noteText.value = "";
-    saveNoteBtn.style.display = "inline";
-    clearFormBtn.style.display = "inline";
-    newNoteBtn.style.display = "none";
+    showSaveAndClearButtons();
   });
 
   fetchNotes();
+  hideSaveAndClearButtons(); // Initially hide Save and Clear buttons
 });

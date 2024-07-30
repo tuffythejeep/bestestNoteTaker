@@ -1,12 +1,11 @@
-html,
-body {
+html, body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
 .save-note, .new-note, .clear-btn {
-  display: none;
+  margin-left: 15px;
 }
 
 .icons {
@@ -16,8 +15,7 @@ body {
   cursor: pointer;
 }
 
-.note-textarea,
-.note-title {
+.note-textarea, .note-title {
   color: #000000;
   width: 100%;
   outline: none;
@@ -36,8 +34,7 @@ body {
   font-size: 3rem;
 }
 
-.note-title:read-only,
-.note-textarea:read-only {
+.note-title:read-only, .note-textarea:read-only {
   color: #757575;
 }
 
