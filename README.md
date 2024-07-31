@@ -30,13 +30,14 @@ You can find my repository page here:
 
 - <https://github.com/tuffythejeep/bestestNoteTaker>
 
-Here is the GitHub deployed site:
+Here is the RENDER site:
 
-- <https://tuffythejeep.github.io/bestestNoteTaker/>
+- <https://bestestnotetaker.onrender.com)>
 
-Here is a picture of my deployed website (index.html):
-![image](https://github.com/user-attachments/assets/6d4ce29c-5cb0-4110-ba90-814e06424e58)
+Here are some pictures of my application on RENDER:
+![image](https://github.com/user-attachments/assets/4ab45a30-26f0-49d3-b747-63a6b2b90d79)
 
+![image](https://github.com/user-attachments/assets/a780b06a-9d26-4b5c-9317-f68b8329af2b)
 
 
 
