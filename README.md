@@ -34,7 +34,7 @@ Here is the GitHub deployed site:
 
 - <https://tuffythejeep.github.io/bestestNoteTaker/>
 
-Here is a picture of my index.html:
+Here is a picture of my deployed website (index.html):
 ![image](https://github.com/user-attachments/assets/6d4ce29c-5cb0-4110-ba90-814e06424e58)
 
 
