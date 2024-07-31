@@ -4,15 +4,12 @@ The bestest NoteTaker ever created!
 
 ## Description
 
-This repository contains my solution for the Module 11 Challenge - \
-"11 Express.js: Note Taker"
+This repository contains my solution for the Module 11 Challenge - "11 Express.js: Note Taker"
 
 In order for my work to show what I can do, I used Node.js and the Express package to complete the following User Story and A/C:
 
 User Story: \
-AS A small business owner
-I WANT to be able to write and save notes
-SO THAT I can organize my thoughts and keep track of tasks I need to complete
+AS A small business owner, I WANT to be able to write and save notes, SO THAT I can organize my thoughts and keep track of tasks I need to complete
 
 Acceptance Criteria: \
 GIVEN a note-taking application
@@ -38,7 +35,7 @@ Here is the link to my video (which was recorded with sound):
 - <https://tuffythejeep.github.io/bestestNoteTaker/>
 
 Here is a picture of my index.html:
-![![image](https://github.com/user-attachments/assets/f9b3ab98-7d27-489d-996f-be0cdf046ab5))
+[image](https://github.com/user-attachments/assets/f9b3ab98-7d27-489d-996f-be0cdf046ab5))
 
 
 ## Installation
@@ -63,7 +60,7 @@ I usually credit Jasper Garcia, my son, who helps me troubleshoot when I am stuc
 
 - <https://bing.com/>
 
-- - <[https://bing.com/](https://claude.ai/new)> for troubleshooting and error handling, because I had a hard time getting my code to work
+- <(https://claude.ai/new)> for troubleshooting and error handling, because I had a hard time getting my code to work
 
 
 I referenced code from the UT provided lessons, however, I wrote all my own changes, edits, tweaks, and versions of my node.js application.
