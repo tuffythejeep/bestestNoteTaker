@@ -32,7 +32,7 @@ You can find my repository page here:
 
 Here is the RENDER site:
 
-- <https://bestestnotetaker.onrender.com)>
+- <https://bestestnotetaker.onrender.com>
 
 Here are some pictures of my application on RENDER:
 ![image](https://github.com/user-attachments/assets/4ab45a30-26f0-49d3-b747-63a6b2b90d79)
