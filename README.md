@@ -37,11 +37,8 @@ Here is the link to my video (which was recorded with sound):
 
 - <https://tuffythejeep.github.io/bestestNoteTaker/>
 
-Here is a picture of my generated OUTPUTREADME.md:
-![image](https://github.com/user-attachments/assets/67b8474a-8e7f-4137-bb74-3b2466a517f3)
-
-
-![image](https://github.com/user-attachments/assets/cb2df9a6-93fd-470c-8c61-67c77f3739a3)
+Here is a picture of my index.html:
+![![image](https://github.com/user-attachments/assets/f9b3ab98-7d27-489d-996f-be0cdf046ab5))
 
 
 ## Installation
@@ -50,11 +47,11 @@ N/A
 
 ## Usage
 
-My final version of the work mirrors the UT Challenge source file/code, acceptance criteria, rubric, and video submission.
+My final version of the work mirrors the UT Challenge source file/code, user story, acceptance criteria, and grading rubric.
 
 ## Credits
 
-I usually credit Jasper Garcia, my son, who helps me troubleshoot when I am stuck - however, I wrote all my own code without any impediments, on this one. So I did not need his help whatsoever.
+I usually credit Jasper Garcia, my son, who helps me troubleshoot when I am stuck - however, I wrote all my own code without any impediments, on this one.
 
 - <https://developer.mozilla.org/en-US/>
 
@@ -66,11 +63,14 @@ I usually credit Jasper Garcia, my son, who helps me troubleshoot when I am stuc
 
 - <https://bing.com/>
 
+- - <[https://bing.com/](https://claude.ai/new)> for troubleshooting and error handling, because I had a hard time getting my code to work
+
+
 I referenced code from the UT provided lessons, however, I wrote all my own changes, edits, tweaks, and versions of my node.js application.
 
 I commented and committed to my repo heavily.
 
-I was able to deploy without issue and my code generated the necessary OUTPUTREADME.md.
+I was able to deploy, but not without many issues.
 
 ## License
 
