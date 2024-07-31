@@ -50,13 +50,45 @@ document.addEventListener("DOMContentLoaded", () => {
     const li = document.createElement("li");
     li.className = "list-group-item";
     li.dataset.id = note.id;
-    li.textContent = note.title;
-    li.addEventListener("click", () => {
+
+    const titleSpan = document.createElement("span");
+    titleSpan.className = "list-item-title";
+    titleSpan.textContent = note.title;
+    titleSpan.addEventListener("click", () => {
       noteTitle.value = note.title;
       noteText.value = note.text;
       hideSaveAndClearButtons();
     });
+
+    const deleteBtn = document.createElement("i");
+    deleteBtn.className =
+      "fas fa-trash-alt float-right text-danger delete-note";
+    deleteBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      deleteNote(note.id);
+    });
+
+    li.appendChild(titleSpan);
+    li.appendChild(deleteBtn);
+
     return li;
+  }
+
+  function deleteNote(id) {
+    fetch(`/api/notes/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to delete note");
+        }
+        return response.json();
+      })
+      .then(() => {
+        fetchNotes(); // Refresh the list after deletion
+        clearForm(); // Clear the form if the deleted note was being displayed
+      })
+      .catch((error) => console.error("Error:", error));
   }
 
   function saveNote() {
@@ -97,4 +129,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   fetchNotes();
- });
+});
