@@ -30,12 +30,14 @@ You can find my repository page here:
 
 - <https://github.com/tuffythejeep/bestestNoteTaker>
 
-Here is the link to my video (which was recorded with sound):
+Here is the GitHub deployed site:
 
 - <https://tuffythejeep.github.io/bestestNoteTaker/>
 
 Here is a picture of my index.html:
-[image](https://github.com/user-attachments/assets/f9b3ab98-7d27-489d-996f-be0cdf046ab5))
+![image](https://github.com/user-attachments/assets/6d4ce29c-5cb0-4110-ba90-814e06424e58)
+
+
 
 
 ## Installation
@@ -61,6 +63,7 @@ I usually credit Jasper Garcia, my son, who helps me troubleshoot when I am stuc
 - <https://bing.com/>
 
 - <(https://claude.ai/new)> for troubleshooting and error handling, because I had a hard time getting my code to work
+
 
 
 I referenced code from the UT provided lessons, however, I wrote all my own changes, edits, tweaks, and versions of my node.js application.
