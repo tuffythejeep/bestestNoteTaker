@@ -33,14 +33,14 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("/api/notes")
       .then((response) => response.json())
       .then((notes) => {
-        listGroup.innerHTML = ""; // Clear existing notes
+        listGroup.innerHTML = ""; 
         if (notes.length > 0) {
           notes.forEach((note) => {
             const li = createNoteElement(note);
             listGroup.appendChild(li);
           });
         } else {
-          listGroup.innerHTML = "<p>No notes yet!</p>"; // Display message for empty list
+          listGroup.innerHTML = "<p>No notes yet!</p>";
         }
       })
       .catch((error) => console.error("Error:", error));
@@ -85,8 +85,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return response.json();
       })
       .then(() => {
-        fetchNotes(); // Refresh the list after deletion
-        clearForm(); // Clear the form if the deleted note was being displayed
+        fetchNotes();
+        clearForm(); 
       })
       .catch((error) => console.error("Error:", error));
   }
