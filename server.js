@@ -39,7 +39,7 @@ app.post("/api/notes", (req, res) => {
     );
   });
 });
-// Updated DELETE route
+
 app.delete("/api/notes/:id", (req, res) => {
   const idToDelete = req.params.id;
   fs.readFile(path.join(__dirname, "db.json"), "utf8", (err, data) => {
@@ -49,13 +49,13 @@ app.delete("/api/notes/:id", (req, res) => {
     }
     let notes = JSON.parse(data);
     const initialLength = notes.length;
-    // Remove the note with the given id
+
     notes = notes.filter((note) => note.id !== idToDelete);
-    // Check if a note was actually deleted
+
     if (notes.length === initialLength) {
       return res.status(404).json({ error: "Note not found" });
     }
-    // Rewrite the notes to the db.json file
+
     fs.writeFile(
       path.join(__dirname, "db.json"),
       JSON.stringify(notes, null, 2),
@@ -69,7 +69,7 @@ app.delete("/api/notes/:id", (req, res) => {
     );
   });
 });
-// HTML Routes
+
 app.get("/notes", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "notes.html"));
 });
