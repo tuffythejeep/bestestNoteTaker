@@ -30,7 +30,7 @@ You can find my repository page here:
 
 - <https://github.com/tuffythejeep/bestestNoteTaker>
 
-Here is the RENDER site:
+Here is the RENDER site (PLEASE NOTE THAT IT MAY TAKE A FEW SECONDS TO LOAD!!!!!):
 
 - <https://bestestnotetaker.onrender.com>
 
